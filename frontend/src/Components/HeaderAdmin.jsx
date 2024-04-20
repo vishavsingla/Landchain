@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { loginUser } from "../utils/API/authAPI";
 import { setSessionTocken, isLogin, logOut } from "../utils/cookieSetup";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/Anti-Corrupto.png";
 
 function HeaderAdmin() {
 	const [isLoggedd, setisLoggedd] = useState(false);
@@ -22,16 +23,17 @@ function HeaderAdmin() {
 		navigate("/login");
 	};
 	return (
-		<div className=" h-20 bg-slate-300 w-screen flex-row opacity-90 absolute top-0">
+		<div className=" h-20 bg-slate-300 w-screen flex-row opacity-90 absolute top-0 items-center">
 			<div className=" h-1/6 bg-slate-800 "></div>
 
 			<div className="p-4 flex flex-row justify-between items-center">
-				<div className="pl-2 text-gray-700 rounded-lg font-bold hover:text-gray-900 ">
-					<NavLink to={"/dashboard"}>Land Chain</NavLink>
+				<div className="pl-2 flex flex-row justify-center items-center text-gray-700 rounded-lg font-bold hover:text-gray-900 ">
+					<img src={logo} alt="Image" className="h-12" />
+					<NavLink to={"/dashboard"}>Anti-Corruptō</NavLink>
 				</div>
 
 				<ul className="h-5/6 flex flex-row justify-center space-x-8  items-center">
-					<li className="border pr-8 border-slate-300 h-1/2 border-r-slate-950 hover:text-blue-600 hover:border-r-blue-600">
+					{/* <li className="border pr-8 border-slate-300 h-1/2 border-r-slate-950 hover:text-blue-600 hover:border-r-blue-600">
 						<NavLink to={"/"}>
 							<button>Home</button>
 						</NavLink>
@@ -45,7 +47,7 @@ function HeaderAdmin() {
 						<NavLink to={"/transfer"}>
 							<button>Transfer Land</button>
 						</NavLink>
-					</li>
+					</li> */}
 					{/* <li className="border  border-slate-300 h-1/2 pr-8  hover:text-blue-600">
 						<button>Profile</button>
 					</li> */}

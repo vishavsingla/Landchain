@@ -41,16 +41,16 @@ function Login() {
   }, []);
   return (
     <div
-      className="h-full flex flex-row justify-center items-center font object-cover"
+      className="h-screen flex flex-row justify-center items-center font object-cover"
       style={{
         backgroundImage: `url("https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
       }}
     >
-      <div className="   m-20 h-full  flex flex-row items-center justify-center rounded-xl backdrop-brightness-90">
+      <div className=" p-4  m-20  flex flex-row items-center justify-center rounded-xl backdrop-brightness-90">
         <div className="flex flex-col md:flex-row">
           <div className="order-2 md:order-1">
             <div className="p-8">
-              <h1 className="text-3xl font-bold mb-4 text-center">Login</h1>
+              <h1 className="text-3xl font-bold mb-8 text-center">Login</h1>
               <form onSubmit={handleLogin} className="mb-4">
                 <div className="mb-2">
                   <label
@@ -93,11 +93,11 @@ function Login() {
                   Login
                 </button>
               </form>
-              <div className="flex items-center justify-center">
+              <div className="flex pt-4 items-center justify-center">
                 <p className="mr-2">Don't have an account?</p>
                 <button
                   onClick={() => navigate("/Signup")}
-                  className="text-blue-800"
+                  className="text-blue-800 font-bold"
                 >
                   Signup
                 </button>
