@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:123@localhost:5432/land?schema=public"
+}
+
+model User {
+  id              String           @id @default(cuid())
+  name            String?
+  email           String?          @unique
+  emailVerified   DateTime?
+  hashedPassword  String
+  access_token    String?
+  refresh_token   String?
+  expires_at      Int?
+  token_type      String?
+  scope           String?
+  id_token        String?
+  session_state   String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  sessions        Session[]
+  verificationTokens VerificationToken[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([identifier, token])
+}
+
+model Land {
+  id                        String   @id @default(cuid())
+  location                  String
+  area                      String
+  dimensionOfLand           String
+  landIdentificationNumber  String
+  ownerId                   String  
+  parcelStatus              String?  
+}

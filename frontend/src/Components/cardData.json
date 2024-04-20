@@ -1,0 +1,44 @@
+{
+	"lands": [
+		{
+			"name": "Land 1",
+			"type": "Type 1",
+			"area": "Area 1",
+			"location": "Location 1",
+			"currentRate": 2000000,
+			"imageUrl": "https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		},
+		{
+			"name": "Land 2",
+			"type": "Type 2",
+			"area": "Area 2",
+			"location": "Location 2",
+			"currentRate": 3000000,
+			"imageUrl": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		},
+		{
+			"name": "Land 3",
+			"type": "Type 3",
+			"area": "Area 3",
+			"location": "Location 3",
+			"currentRate": 4000000,
+			"imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		},
+		{
+			"name": "Land 4",
+			"type": "Type 4",
+			"area": "Area 4",
+			"location": "Location 4",
+			"currentRate": 5000000,
+			"imageUrl": "https://images.unsplash.com/photo-1605146769289-440113cc3d00?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		},
+		{
+			"name": "Land 5",
+			"type": "Type 5",
+			"area": "Area 5",
+			"location": "Location 5",
+			"currentRate": 6000000,
+			"imageUrl": "https://images.unsplash.com/photo-1591389703635-e15a07b842d7?q=80&w=2833&"
+		}
+	]
+}
