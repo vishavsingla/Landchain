@@ -191,7 +191,7 @@ function Dashboard() {
 							</div>
 						</div>
 					</div>
-					<Link to={`/transfer/${land.landId}`}>
+					<Link to={`/transfer/${land.id}`}>
 						<p className="p-4 text-lg font-bold">
 							Owner: {land.currentOwner}
 							<br></br>

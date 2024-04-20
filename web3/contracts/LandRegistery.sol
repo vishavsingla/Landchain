@@ -84,7 +84,7 @@ contract LandRegistery {
         uint256 _landId = parseAndConvert(_landIdentificationNumber);
         Land storage land = allLands[_landId];
         require(land.currentOwner == msg.sender, "Only the current owner can transfer the land");
-        require(land.status == LandStatus.Registered, "Land is not registered");
+        // require(land.status == LandStatus.Registered, "Land is not registered");
 
         land.prevOwner = land.currentOwner;
         land.currentOwner = _newOwner;

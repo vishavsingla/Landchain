@@ -180,7 +180,7 @@ const LandProvider = ({ children }) => {
         const transactionHash = await landContract.transferLand(
           landId,
           currentOwnerId, 
-          parsedAmount.toString(16)
+          String(parsedAmount)
         );
         console.log("hi3");
         console.log("Error aya error");
