@@ -114,7 +114,7 @@ const LandProvider = ({ children }) => {
 
   const addLandToBlockchain = async (formData) => {
     console.log("in backend", formData);
-    try {
+    if(true) {
       if (window.ethereum) {
         const {
           location,
@@ -142,11 +142,11 @@ const LandProvider = ({ children }) => {
       } else {
         console.log("No ethereum object");
       }
-    } catch (error) {
-      console.log(error);
-
-      throw new Error("No ethereum object");
-    }
+    } 
+    // catch (error) {
+    //   console.log(error);
+    //   throw new Error("Error In Adding Land");
+    // }
   };
 
   const transferLandfunc = async (formData) => {

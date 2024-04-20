@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LandContext } from "../../context/LandContext";
 import HeaderAdmin from "../../Components/HeaderAdmin";
-
+import axios from "axios";
 import { ethers } from "ethers";
 
 const TransferLand = () => {
@@ -10,6 +10,7 @@ const TransferLand = () => {
   const [iserror, setIsError] = useState(false);
   const [newOwnerAddress, setNewOwnerAddress] = useState("");
   const [transferAmount, setTransferAmount] = useState("");
+  const [predictionn, setPrediction] = useState("");
 
   const navigate = useNavigate();
 
@@ -40,8 +41,23 @@ const TransferLand = () => {
     console.log(tempid);
   };
 
+  const handlePrediction = async () => {
+    try {
+        const response = await axios.post('http://localhost:5000/predict', {
+            Area_SqFt: 1000, // Replace with your input data
+            Floor_No: 2, // Replace with your input data
+            Bedroom: 3 // Replace with your input data
+        });
+        setPrediction(response.data.prediction);
+        console.log("Tera bhai jod : ",response.data.prediction);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
   useEffect(() => {
     checkIfWalletIsConnect();
+    handlePrediction();
   }, []);
 
   return (
