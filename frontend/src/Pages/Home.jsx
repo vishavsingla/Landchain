@@ -1,5 +1,4 @@
-import React from "react";
-import HeaderHome from "../Components/HeaderHome";
+@ -3,37 +3,31 @@ import HeaderHome from "../Components/HeaderHome";
 
 function Home() {
   return (
