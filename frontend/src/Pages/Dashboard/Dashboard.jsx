@@ -31,14 +31,14 @@ function Dashboard() {
     const tlands = await getUserLands(tempuserId.data.id);
     console.log("tlands,",tlands)
     setLands(tlands);
-    console.log("lands,",lands);
   } 
-
+  
   useEffect(() => {
     const checkLoginSession = isLogin();
     if (checkLoginSession) {
       setisLoggedd(true);
       getLands();
+      console.log("lands,",lands);
     } else {
       setisLoggedd(false);
       navigate("/login");
@@ -134,7 +134,7 @@ function Dashboard() {
       </div>
 
       <p className="text-xl mt-8 m-4 font-bold">My Lands</p>
-
+              
       {lands.map((land, index) => (
         <div
           key={index}
@@ -176,7 +176,7 @@ function Dashboard() {
             <p className="p-4 text-lg font-bold">
               Owner: {land.currentOwner}
               <br></br>
-              Current Rate: ₹{land.transferAmount.toString()}/-
+              Current Rate: ₹{land.transferAmount}/-
             </p>
           </Link>
         </div>
