@@ -42,12 +42,12 @@ const Signup = () => {
 
   return (
     <div
-      className="h-full flex flex-row justify-center items-center font object-cover"
+      className="h-screen flex flex-row justify-center items-center font object-cover"
       style={{
         backgroundImage: `url("https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
       }}
     >
-      <div className="   m-20 h-full  flex flex-row items-center justify-center rounded-xl backdrop-brightness-90">
+      <div className="   m-20 p-4 flex flex-row items-center justify-center rounded-xl backdrop-brightness-90">
         <div className="flex flex-col md:flex-row">
           {/* <div className="md:w-2/3 order-1 md:order-2 mb-4 md:mb-0">
             <img
@@ -58,7 +58,7 @@ const Signup = () => {
           </div> */}
           <div className=" order-2 md:order-1">
             <div className="p-8">
-              <h1 className="text-3xl font-bold mb-4 text-center">Signup</h1>
+              <h1 className="text-3xl font-bold mb-10 text-center">Signup</h1>
 
               <form className="mb-4" onSubmit={handleSignup}>
                 <div className="mb-2 flex">
@@ -188,9 +188,9 @@ const Signup = () => {
                   Submit
                 </button>
               </form>
-              <div className="flex items-center justify-center">
+              <div className="flex pt-4 items-center justify-center">
                 <p className="mr-2">Already Having an Account?</p>
-                <button className="text-blue-800">
+                <button className="text-blue-800 font-bold">
                   <NavLink to={"/login"}>Login</NavLink>
                 </button>
               </div>

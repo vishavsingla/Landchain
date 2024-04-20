@@ -12,21 +12,21 @@ import Market from "./Pages/Dashboard/Market";
 import Chat from "./Pages/Chat";
 
 function App() {
-  return (
-    <BrowserRouter className="flex items-center justify-center">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/addland" element={<AddLand />} />
-        <Route path="/View" element={<ViewLand />} />
-        <Route path="/chat" element={<Chat />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/Market" element={<Market />} />
-        <Route path="/transfer/:id" element={<TransferLand />} />
-      </Routes>
-    </BrowserRouter>
-  );
+	return (
+			<BrowserRouter className="flex items-center justify-center">
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/signup" element={<Signup />} />
+					<Route path="/addland" element={<AddLand />} />
+					<Route path="/View" element={<ViewLand />} />
+					<Route path="/chat" element={<Chat />} />
+					<Route path="/dashboard" element={<Dashboard />} />
+					<Route path="/Market" element={<Market />} />
+					<Route path="/transfer/:id" element={<TransferLand />} />
+				</Routes>
+			</BrowserRouter>
+	);
 }
 
 export default App;

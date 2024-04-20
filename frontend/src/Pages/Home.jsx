@@ -88,7 +88,7 @@ function Home() {
 					</div>
 					<div className="space-x-6 flex flex-row">
 						<div className="ml-2 bg-slate-300 p-2 px-12 rounded-3xl font-bold text-md text-slate-700 hover:bg-black hover:text-amber-100 drop-shadow-xl">
-							<NavLink to={"/signup"}>Sign In</NavLink>
+							<NavLink to={"/signup"}>Sign Up</NavLink>
 						</div>
 						<div className="ml-2 bg-slate-300 p-2 px-12 rounded-3xl font-bold text-md text-slate-700 hover:bg-black hover:text-amber-100 drop-shadow-xl">
 							<NavLink to={"/login"}>Login</NavLink>
