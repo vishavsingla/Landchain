@@ -28,7 +28,7 @@ function Header() {
 
       <div className="p-4 flex flex-row justify-between items-center">
         <div className="pl-2 text-gray-700 rounded-lg font-bold hover:text-gray-900 ">
-          <NavLink to={"/dashboard"}>Land Chain</NavLink>
+          <NavLink to={"/dashboard"}>Anti-Corruptō</NavLink>
         </div>
 
         <ul className="h-5/6 flex flex-row justify-center space-x-8  items-center">

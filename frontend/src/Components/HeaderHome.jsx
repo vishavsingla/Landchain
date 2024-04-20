@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 function HeaderHome() {
   const [isLoggedd, setisLoggedd] = useState(false);
   const navigate = useNavigate();
+  
   useEffect(() => {
     const checkLoginSession = isLogin();
     if (checkLoginSession) {

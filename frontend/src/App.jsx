@@ -10,18 +10,20 @@ import TransferLand from "./Pages/Dashboard/TransferLand";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Market from "./Pages/Dashboard/Market";
 import Chat from "./Pages/Chat";
+import LandingPage from "./Pages/LandingPage";
 
 function App() {
   return (
     <BrowserRouter className="flex items-center justify-center">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/addland" element={<AddLand />} />
-        <Route path="/View" element={<ViewLand />} />
+        <Route path="/view" element={<ViewLand />} />
         <Route path="/chat" element={<Chat />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/Market" element={<Market />} />
         <Route path="/transfer/:id" element={<TransferLand />} />
       </Routes>
