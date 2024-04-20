@@ -10,6 +10,7 @@ import TransferLand from "./Pages/Dashboard/TransferLand";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Market from "./Pages/Dashboard/Market";
 import Chat from "./Pages/Chat";
+import Cases from "./Pages/Cases";
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/Market" element={<Market />} />
 					<Route path="/transfer/:id" element={<TransferLand />} />
+					<Route path="/cases" element={<Cases />} />
 				</Routes>
 			</BrowserRouter>
 	);
