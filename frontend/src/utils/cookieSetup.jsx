@@ -42,6 +42,7 @@ export const isLogin = () => {
 
 export const getToken = () => {
   const token = getCookie("token");
+  console.log("In cookie : ", token);
   isLogin();
   return token;
 };

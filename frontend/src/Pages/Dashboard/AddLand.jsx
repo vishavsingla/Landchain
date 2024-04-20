@@ -6,7 +6,6 @@ import { addLand } from "../../utils/landAPI";
 import { getToken, isLogin } from "../../utils/cookieSetup";
 import HeaderAdmin from "../../Components/HeaderAdmin";
 
-// import { ethers } from "ethers";
 
 const AddLand = () => {
   const [error, setError] = useState("");
@@ -39,6 +38,7 @@ const AddLand = () => {
       landIdentificationNumber: landIdentificationNumber,
       landType: landType,
     };
+
     const tempid = await addLandToBlockchain(tformData);
     console.log(tempid);
     let formDataDB = {
@@ -49,6 +49,7 @@ const AddLand = () => {
       landType: landType,
       ownerId: thisUser.data.id,
     };
+    console.log(formData)
     const res = await addLand(formDataDB);
     console.log("Res : ", res);
     if (res.status === 200) {

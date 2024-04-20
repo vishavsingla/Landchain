@@ -4,12 +4,14 @@ const API_URL = "http://localhost:3000/land";
 
 export const getUserLands = async (userId) => {
   try {
-    const response = await axios.get(`${API_URL}/${userId}/all`);
+    const response = await axios.get(`${API_URL}/${userId}`);
+    console.log("In api   :    ",response);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
+
 export const getOneLand = async (vehicleId) => {
   try {
     const response = await axios.get(`${API_URL}/${userId}/${vehicleId}`);
@@ -22,6 +24,7 @@ export const getOneLand = async (vehicleId) => {
 export const addLand = async (land) => {
   try {
     const response = await axios.post(`${API_URL}/create`, land);
+    console.log(response);
     return response;
   } catch (error) {
     throw error;

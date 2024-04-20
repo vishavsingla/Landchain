@@ -58,11 +58,12 @@ const getAllLands = async (req, res) => {
 };
 
 const getLandById = async (req, res) => {
-  const id = req.params.id;
+  const ownerId = req.params.id;
   try {
-    const land = await prisma.land.findUnique({
-      where: { id },
+    const land = await prisma.land.findMany({
+      where: { ownerId },
     });
+    console.log("hi : ", land);
     if (!land) {
       res.status(404).json({ error: "Land not found" });
     } else {

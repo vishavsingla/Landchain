@@ -7,24 +7,38 @@ import { BiCategory } from "react-icons/bi";
 import { FaCaretDown } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import { loginUser } from "../../utils/authAPI";
-import { setSessionTocken, isLogin } from "../../utils/cookieSetup";
+import { setSessionTocken, isLogin, getCookie, getToken } from "../../utils/cookieSetup";
 import { useNavigate } from "react-router-dom";
 import { LandContext } from "../../context/LandContext";
 import { Link } from "react-router-dom";
+import { getUserLands } from "../../utils/landAPI";
+import { fetchUserDetails } from "../../utils/authAPI";
 
 function Dashboard() {
   const [isLoggedd, setisLoggedd] = useState(false);
   const { transactions, checkIfWalletIsConnect } = useContext(LandContext);
+  const [lands, setLands] = useState([]);
 
   const navigate = useNavigate();
+
   useEffect(() => {
     checkIfWalletIsConnect();
+    
   }, []);
+
+  const getLands = async () => {
+    const tempuserId=await fetchUserDetails(getToken());
+    const tlands = await getUserLands(tempuserId.data.id);
+    console.log("tlands,",tlands)
+    setLands(tlands);
+    console.log("lands,",lands);
+  } 
 
   useEffect(() => {
     const checkLoginSession = isLogin();
     if (checkLoginSession) {
       setisLoggedd(true);
+      getLands();
     } else {
       setisLoggedd(false);
       navigate("/login");
@@ -121,7 +135,7 @@ function Dashboard() {
 
       <p className="text-xl mt-8 m-4 font-bold">My Lands</p>
 
-      {transactions.map((land, index) => (
+      {lands.map((land, index) => (
         <div
           key={index}
           className="flex flex-col w-2/3 h-72 bg-slate-700 rounded-lg m-4 object-fill bg-cover  justify-between shadow-2xl"
