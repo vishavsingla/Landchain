@@ -1,7 +1,7 @@
 import HeaderHome from "../Components/HeaderHome";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { loginUser } from "../utils/authAPI";
+import { loginUser } from "../utils/API/authAPI";
 import { isLogin, logOut } from "../utils/cookieSetup";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/Anti-Corrupto.png";

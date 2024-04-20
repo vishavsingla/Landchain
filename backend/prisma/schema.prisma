@@ -8,22 +8,25 @@ datasource db {
 }
 
 model User {
-  id              String           @id @default(cuid())
-  name            String?
-  email           String?          @unique
-  emailVerified   DateTime?
-  hashedPassword  String
-  access_token    String?
-  refresh_token   String?
-  expires_at      Int?
-  token_type      String?
-  scope           String?
-  id_token        String?
-  session_state   String?
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  sessions        Session[]
+  id                 String              @id @default(cuid())
+  name               String?
+  email              String?             @unique
+  emailVerified      DateTime?
+  hashedPassword     String
+  access_token       String?
+  refresh_token      String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  sessions           Session[]
   verificationTokens VerificationToken[]
+  ownedLands         Land[]              @relation("LandOwner")
+  transferredLands   TransferLand[]      @relation("PrevOwner")
+  acquiredLands      TransferLand[]      @relation("CurrentOwner")
 }
 
 model Session {
@@ -45,11 +48,38 @@ model VerificationToken {
 }
 
 model Land {
-  id                        String   @id @default(cuid())
-  location                  String
-  area                      String
-  dimensionOfLand           String
-  landIdentificationNumber  String
-  ownerId                   String  
-  parcelStatus              String?  
+  id                       String         @id @default(cuid())
+  location                 String
+  area                     String
+  dimensionOfLand          String
+  landIdentificationNumber String
+  ownerId                  String
+  owner                    User           @relation("LandOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  parcelStatus             String?
+  currentPrice             String?
+  boughtPrice              String?
+  transferHistory          TransferLand[]
+}
+
+model TransferLand {
+  id             String     @id @default(cuid())
+  prevOwnerId    String
+  prevOwner      User       @relation("PrevOwner", fields: [prevOwnerId], references: [id], onDelete: Cascade)
+  currentOwnerId String
+  currentOwner   User       @relation("CurrentOwner", fields: [currentOwnerId], references: [id], onDelete: Cascade)
+  landId         String
+  land           Land       @relation(fields: [landId], references: [id], onDelete: Cascade)
+  landStatus     String
+  transferDate   DateTime   @default(now())
+  transferPrice  String     @default("0")
+  landCases      LandCase[]
+}
+
+model LandCase {
+  id              String       @id @default(cuid())
+  caseStatus      String
+  caseDescription String
+  caseDate        DateTime
+  transferLand    TransferLand @relation(fields: [transferLandId], references: [id], onDelete: Cascade)
+  transferLandId  String
 }

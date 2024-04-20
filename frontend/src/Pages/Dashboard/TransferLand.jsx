@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { LandContext } from "../../context/LandContext";
 import HeaderAdmin from "../../Components/HeaderAdmin";
 import axios from "axios";
 import { ethers } from "ethers";
+import { createTransferLand } from "../../utils/API/transferAPI";
+import { getOneLand } from "../../utils/API/landAPI";
+
 
 const TransferLand = () => {
   const [error, setError] = useState("");
@@ -11,6 +14,8 @@ const TransferLand = () => {
   const [newOwnerAddress, setNewOwnerAddress] = useState("");
   const [transferAmount, setTransferAmount] = useState("");
   const [predictionn, setPrediction] = useState("");
+
+  const landId = useParams();
 
   const navigate = useNavigate();
 
@@ -30,23 +35,32 @@ const TransferLand = () => {
   const handleNewSubmit = async (e) => {
     e.preventDefault();
     console.log("hi");
+    
+    const land = await getOneLand(landId);
+    
+    console.log("transfer Land : ",land);
 
-    let tformData = {
-      landId:
-        23605435676249247752549801217230229776778712319924822140605527300529037770752n,
-      newOwnerAddress,
-      transferAmount,
+    const transferData = {
+      prevOwnerId: land.data.ownerId,
+      currentAccount,
+      currentOwnerId: newOwnerAddress,
+      landId: land.data.landIdentificationNumber,
+      landStatus: "with new user",
+      transferAmount
     };
-    const tempid = transferLandfunc(tformData);
+    const tempid = await transferLandfunc(transferData);
     console.log(tempid);
+
+    const response = await createTransferLand(transferData);
+      console.log(response);
   };
 
   const handlePrediction = async () => {
     try {
         const response = await axios.post('http://localhost:5000/predict', {
-            Area_SqFt: 1000, // Replace with your input data
-            Floor_No: 2, // Replace with your input data
-            Bedroom: 3 // Replace with your input data
+            Area_SqFt: 1000,
+            Floor_No: 2, 
+            Bedroom: 3
         });
         setPrediction(response.data.prediction);
         console.log("Tera bhai jod : ",response.data.prediction);
@@ -57,7 +71,7 @@ const TransferLand = () => {
 
   useEffect(() => {
     checkIfWalletIsConnect();
-    handlePrediction();
+    // handlePrediction();
   }, []);
 
   return (

@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authRouter = require('./routers/authRouter');
 const landRouter = require('./routers/landRouter');
+const transferlandRouter = require('./routers/transferlandRouter');
+const landcase = require('./routers/landcaseRouter');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const app = express();
@@ -23,6 +25,8 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authRouter);
 app.use('/land', landRouter);
+app.use('/transferland', transferlandRouter);
+app.use('/case', landcase);
 
 const port = 3000;
 
