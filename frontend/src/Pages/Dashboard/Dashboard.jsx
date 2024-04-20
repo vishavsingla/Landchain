@@ -14,8 +14,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { LandContext } from "../../context/LandContext";
 import { Link } from "react-router-dom";
-import { getUserLands } from "../../utils/landAPI";
-import { fetchUserDetails, loginUser } from "../../utils/authAPI";
+import { getUserLands } from "../../utils/API/landAPI";
+import { fetchUserDetails, loginUser } from "../../utils/API/authAPI";
 import HeaderHome from "../../Components/HeaderHome";
 
 function Dashboard() {

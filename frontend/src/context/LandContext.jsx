@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
-import { landABI, landAddress } from "../utils/constants";
+import { landABI, landAddress } from "../utils/Web3/constants";
 
 export const LandContext = React.createContext();
 
