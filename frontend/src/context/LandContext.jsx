@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
-import { landABI, landAddress } from "../utils/constants";
+import { landABI, landAddress } from "../utils/Web3/constants";
 
 export const LandContext = React.createContext();
 
@@ -152,34 +152,37 @@ const LandProvider = ({ children }) => {
   const transferLandfunc = async (formData) => {
     if (true) {
       if (window.ethereum) {
-        const { landId, newOwnerAddress, transferAmount } = formData;
-
+        const { landId, currentOwnerId, transferAmount } = formData;
+        
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
-
+        
         const landContract = new ethers.Contract(landAddress, landABI, signer);
         const exchangeRate = "50735.67";
-
+        
         const parsedAmount = ethers.parseEther(transferAmount);
-
+        console.log("hi1");
+        
         await ethereum.request({
           method: "eth_sendTransaction",
           params: [
             {
               from: currentAccount,
-              to: newOwnerAddress,
+              to: currentOwnerId,
               gas: "0x5208",
               value: parsedAmount.toString(16),
             },
           ],
         });
-        console.log("parsedAmount : ", parsedAmount);
-
-        const transactionHash = await landContract.transferLand(
-          landId,
-          newOwnerAddress,
-          transferAmount
-        );
+          console.log("hi2");
+          console.log("parsedAmount : ", parsedAmount.toString(16));
+          
+          const transactionHash = await landContract.transferLand(
+            landId,
+            currentOwnerId,
+            parsedAmount.toString(16)
+          );
+          console.log("hi3");
         console.log("Error aya error");
         setIsLoading(true);
         console.log(`Loading - ${transactionHash.hash}`);

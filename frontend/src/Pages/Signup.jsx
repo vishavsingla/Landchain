@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { signUpUser } from "../utils/authAPI";
+import { signUpUser } from "../utils/API/authAPI";
 
 const Signup = () => {
   const [error, setError] = useState("");

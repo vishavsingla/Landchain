@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LandContext } from "../../context/LandContext";
-import { loginUser, fetchUserDetails } from "../../utils/authAPI";
-import { addLand } from "../../utils/landAPI";
+import { loginUser, fetchUserDetails } from "../../utils/API/authAPI";
+import { addLand } from "../../utils/API/landAPI";
 import { getToken, isLogin } from "../../utils/cookieSetup";
 import HeaderAdmin from "../../Components/HeaderAdmin";
 

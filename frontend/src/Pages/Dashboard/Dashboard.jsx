@@ -15,8 +15,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { LandContext } from "../../context/LandContext";
 import { Link } from "react-router-dom";
-import { getUserLands } from "../../utils/landAPI";
-import { fetchUserDetails, loginUser } from "../../utils/authAPI";
+import { getUserLands } from "../../utils/API/landAPI";
+import { fetchUserDetails, loginUser } from "../../utils/API/authAPI";
 
 function Dashboard() {
 	const [isLoggedd, setisLoggedd] = useState(false);
@@ -32,6 +32,7 @@ function Dashboard() {
 		console.log("tlands,", tlands);
 		setLands(tlands);
 	};
+	
 	useEffect(() => {
 		checkIfWalletIsConnect();
 		const checkLoginSession = isLogin();
@@ -183,10 +184,11 @@ function Dashboard() {
 							<div className="flex flex-row items-center">
 								<MdLocationPin className="ml-1" />
 								<p>{land.location}</p>
+								<p>{land.location}</p>
 							</div>
 						</div>
 					</div>
-					<Link to={`/transfer/${land.landId}`}>
+					<Link to={`/transfer/${land.id}`}>
 						<p className="p-4 text-lg font-bold">
 							Owner: {land.currentOwner}
 							<br></br>

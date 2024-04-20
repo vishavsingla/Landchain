@@ -57,7 +57,7 @@ const getAllLands = async (req, res) => {
   }
 };
 
-const getLandById = async (req, res) => {
+const getLandByownerId = async (req, res) => {
   const ownerId = req.params.id;
   try {
     const land = await prisma.land.findMany({
@@ -71,7 +71,26 @@ const getLandById = async (req, res) => {
     }
   } catch (error) {
     res
-      .status(500)
+      .status(203)
+      .json({ error: "Error fetching land", details: error.message });
+  }
+};
+
+const getLandById = async (req, res) => {
+  const landId = req.params.id;
+  try {
+    const land = await prisma.land.findUnique({
+      where: { id:landId },
+    });
+    console.log("hi : ", land);
+    if (!land) {
+      res.status(203).json({ error: "Land not found" });
+    } else {
+      res.status(200).json(land);
+    }
+  } catch (error) {
+    res
+      .status(203)
       .json({ error: "Error fetching land", details: error.message });
   }
 };
@@ -94,7 +113,7 @@ const updateLand = async (req, res) => {
     res.status(200).json(land);
   } catch (error) {
     res
-      .status(500)
+      .status(203)
       .json({ error: "Error updating land", details: error.message });
   }
 };
@@ -108,7 +127,7 @@ const deleteLand = async (req, res) => {
     res.status(200).json(land);
   } catch (error) {
     res
-      .status(500)
+      .status(203)
       .json({ error: "Error deleting land", details: error.message });
   }
 };
@@ -117,6 +136,7 @@ module.exports = {
   createLand,
   getAllLands,
   getLandById,
+  getLandByownerId,
   updateLand,
   deleteLand,
 };

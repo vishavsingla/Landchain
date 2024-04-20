@@ -1,6 +1,6 @@
 import cookie from "js-cookie";
 import axios from "axios";
-import { isSessionValid } from "./authAPI";
+import { isSessionValid } from "./API/authAPI";
 
 const API_URL = "http://localhost:3000/auth";
 export const setCookie = (key, value) => {
