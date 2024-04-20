@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { loginUser } from "../utils/API/authAPI";
+import { loginUser } from "../utils/authAPI";
 import { setSessionTocken, isLogin, logOut } from "../utils/cookieSetup";
 import { useNavigate } from "react-router-dom";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
@@ -35,7 +35,7 @@ function HeaderHome() {
 	const handleLogout = () => {
 		logOut();
 		setisLoggedd(false);
-		navigate("/login");
+		navigate("/");
 	};
 
 	const [state, setState] = React.useState({
@@ -69,7 +69,6 @@ function HeaderHome() {
 						<ListItemButton>
 							<ListItemIcon>
 								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                
 							</ListItemIcon>
 							<ListItemText primary={text} />
 						</ListItemButton>
@@ -80,7 +79,7 @@ function HeaderHome() {
 			<List>
 				{["Connect Wallet", "Settings", "Logout"].map((text, index) => (
 					<ListItem key={text} disablePadding>
-						<ListItemButton>
+						<ListItemButton onClick={text === "Logout" ? handleLogout : null}>
 							<ListItemIcon>
 								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
 							</ListItemIcon>
