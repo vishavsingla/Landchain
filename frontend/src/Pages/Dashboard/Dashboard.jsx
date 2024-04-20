@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { MdLocationPin } from "react-icons/md";
 import { IoSearchSharp } from "react-icons/io5";
 import cardData from "../../Components/cardData.json";
-import Header from "../../Components/Header";
 import { BiCategory } from "react-icons/bi";
 import { FaCaretDown } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
@@ -17,6 +16,7 @@ import { LandContext } from "../../context/LandContext";
 import { Link } from "react-router-dom";
 import { getUserLands } from "../../utils/API/landAPI";
 import { fetchUserDetails, loginUser } from "../../utils/API/authAPI";
+import HeaderHome from "../../Components/HeaderHome";
 
 function Dashboard() {
 	const [isLoggedd, setisLoggedd] = useState(false);
@@ -32,7 +32,6 @@ function Dashboard() {
 		console.log("tlands,", tlands);
 		setLands(tlands);
 	};
-	
 	useEffect(() => {
 		checkIfWalletIsConnect();
 		const checkLoginSession = isLogin();
@@ -46,7 +45,7 @@ function Dashboard() {
 	}, []);
 	return (
 		<div className="h-full flex items-center flex-col justify-start bg-cover">
-			<Header />
+			<HeaderHome />
 			<div
 				className="flex flex-col w-full h-96 md:h-auto bg-slate-700 object-fill bg-cover justify-center items-center"
 				style={{
@@ -135,14 +134,19 @@ function Dashboard() {
 						>
 							Add New Land
 						</button>
-						<button className="flex p-4 px-36 mr-8 w-16 rounded-md bg-slate-600 hover:bg-slate-800 text-white justify-center text-nowrap">
+						<button
+							onClick={() => {
+								navigate("/Market");
+							}}
+							className="flex p-4 px-36 mr-8 w-16 rounded-md bg-slate-600 hover:bg-slate-800 text-white justify-center text-nowrap"
+						>
 							Marketplace
 						</button>
 						<button className="flex p-4 px-36 mr-8 w-16 rounded-md bg-slate-600 hover:bg-slate-800 text-white justify-center text-nowrap">
-							ews
+							Transfer Land
 						</button>
 						<button className="flex p-4 px-36 rounded-md w-16 bg-slate-600 hover:bg-slate-800 text-white justify-center text-nowrap">
-							ews
+							Donate all in a click!
 						</button>
 					</div>
 				</div>
@@ -184,11 +188,10 @@ function Dashboard() {
 							<div className="flex flex-row items-center">
 								<MdLocationPin className="ml-1" />
 								<p>{land.location}</p>
-								<p>{land.location}</p>
 							</div>
 						</div>
 					</div>
-					<Link to={`/transfer/${land.id}`}>
+					<Link to={`/transfer/${land.landId}`}>
 						<p className="p-4 text-lg font-bold">
 							Owner: {land.currentOwner}
 							<br></br>
