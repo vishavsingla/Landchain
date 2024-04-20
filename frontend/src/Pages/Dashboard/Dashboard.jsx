@@ -22,6 +22,8 @@ function Dashboard() {
 	const [isLoggedd, setisLoggedd] = useState(false);
 	const { transactions, checkIfWalletIsConnect } = useContext(LandContext);
 	const [lands, setLands] = useState([]);
+	const [sortBy, setSortBy] = useState("");
+
 	const navigate = useNavigate();
 
 	const getLands = async () => {
@@ -50,7 +52,7 @@ function Dashboard() {
 					backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(255, 255, 255)), url("https://images.unsplash.com/photo-1591389703635-e15a07b842d7?q=80&w=2833&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
 				}}
 			>
-				<p className=" bg-center text-white text-5xl py-24 font-bold drop-shadow-xl">
+				<p className=" bg-center text-white text-5xl py-20 font-bold drop-shadow-xl">
 					<TypeAnimation
 						sequence={[
 							// Same substring at the start will only be typed out once, initially
@@ -80,13 +82,28 @@ function Dashboard() {
 				<div className="flex flex-col p-5 w-full items-center justify-center">
 					<div className="flex flex-row mb-6 w-full justify-center items-center">
 						<div
-							className="h-12 p-4 flex flex-row ml-12 justify-center text-sm items-center bg-slate-800 rounded-xl cursor-pointer text-white shadow-xl"
-							style={{ whiteSpace: "nowrap" }}
+							className="h-12 p-4 flex flex-row ml-12 justify-center text-sm items-center bg-slate-800 rounded-xl text-white shadow-xl"
+							// style={{ whiteSpace: "nowrap" }}
 						>
-							By Category
-							<FaCaretDown className="text-white ml-2" />
+							<select
+								name="sortBy"
+								id="sortBy"
+								value={sortBy}
+								onChange={(e) => setSortBy(e.target.value)}
+								className=" p-2 px-4 text-white bg-slate-800"
+								required
+							>
+								<option value="" disabled selected>
+									Select Land Type
+								</option>
+								<option value="1">Government</option>
+								<option value="2">Commercial</option>
+								<option value="3">Agricultural</option>
+								<option value="4">Industrial</option>
+								<option value="5">Residential</option>
+							</select>
 						</div>
-						<select
+						{/* <select
 							className="absolute top-0 left-20 h-full w-auto opacity-0 cursor-pointer"
 							style={{ zIndex: 10 }}
 						>
@@ -95,12 +112,12 @@ function Dashboard() {
 							<option value="category2">Area</option>
 							<option value="category3">Type</option>
 							<option value="category4">Price</option>
-						</select>
+						</select> */}
 
 						<input
 							type="text"
 							className="h-12 ml-2 pl-4 w-full rounded-l-xl border-2 border-r-0 shadow-xl"
-							placeholder="Search for property by Location ,owner Name"
+							placeholder="Search for property by Location, Owner name...."
 						/>
 						<div className="h-12 p-4 flex mr-14 justify-center items-center bg-slate-800 rounded-r-xl cursor-pointer text-white shadow-xl">
 							Search
