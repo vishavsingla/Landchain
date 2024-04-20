@@ -94,13 +94,13 @@ function Dashboard() {
 								required
 							>
 								<option value="" disabled selected>
-									Select Land Type
+									Sort By
 								</option>
-								<option value="1">Government</option>
-								<option value="2">Commercial</option>
-								<option value="3">Agricultural</option>
-								<option value="4">Industrial</option>
-								<option value="5">Residential</option>
+								<option value="1">Land Type</option>
+								<option value="2">Price</option>
+								<option value="3">Area</option>
+								<option value="4">Location</option>
+								{/* <option value="5">Residential</option> */}
 							</select>
 						</div>
 						{/* <select
@@ -145,8 +145,13 @@ function Dashboard() {
 						<button className="flex p-4 px-36 mr-8 w-16 rounded-md bg-slate-600 hover:bg-slate-800 text-white justify-center text-nowrap">
 							Transfer Land
 						</button>
-						<button className="flex p-4 px-36 rounded-md w-16 bg-slate-600 hover:bg-slate-800 text-white justify-center text-nowrap">
-							Donate all in a click!
+						<button
+							onClick={() => {
+								navigate("/cases");
+							}}
+							className="flex p-4 px-36 rounded-md w-16 bg-slate-600 hover:bg-slate-800 text-white justify-center text-nowrap"
+						>
+							Cases
 						</button>
 					</div>
 				</div>
