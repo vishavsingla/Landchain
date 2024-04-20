@@ -1,3 +1,4 @@
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -33,10 +34,10 @@ contract LandRegistery {
         _;
     }
 
-    modifier landExists(uint256 _landId) {
-        require(_landId > 0 && _landId <= landCount, "Land does not exist");
-        _;
-    }
+    // modifier landExists(uint256 _landId) {
+    //     require(_landId > 0 && _landId <= landCount, "Land does not exist");
+    //     _;
+    // }
 
     constructor() {
         owner = msg.sender;
@@ -78,17 +79,20 @@ contract LandRegistery {
         emit LandRegistered(landId, msg.sender, _location, _area, _dimensionOfLand, _landIdentificationNumber, _landType);
     }
 
-    function transferLand(uint256 _landId, address _newOwner, string memory _transferAmount) external onlyOwner landExists(_landId) {
+    function transferLand(string memory _landIdentificationNumber, address _newOwner, string memory _transferAmount) external {
+        require(_newOwner != address(0), "Invalid new owner address");
+        uint256 _landId = parseAndConvert(_landIdentificationNumber);
         Land storage land = allLands[_landId];
-
-        require(land.currentOwner == msg.sender, "You are not the current owner of this land");
-
-        // payable(land.currentOwner).transfer(_transferAmount);
+        require(land.currentOwner == msg.sender, "Only the current owner can transfer the land");
+        require(land.status == LandStatus.Registered, "Land is not registered");
 
         land.prevOwner = land.currentOwner;
         land.currentOwner = _newOwner;
         land.status = LandStatus.Transferred;
         land.transferAmount = _transferAmount;
+
+        userLands[msg.sender].push(land);
+        userLands[_newOwner].push(land);
 
         emit LandTransferred(_landId, msg.sender, _newOwner, _transferAmount);
     }
