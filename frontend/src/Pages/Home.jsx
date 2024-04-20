@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../Components/Header";
+import HeaderHome from "../Components/HeaderHome";
 
 function Home() {
   return (
     <div className=" h-full ">
-      <Header/>
+      <HeaderHome/>
       <div
         className="h-[530px] flex flex-col items-center justify-center bg-cover "
         style={{
