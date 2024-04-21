@@ -11,7 +11,7 @@
 # ML Model:
 got 98.73% model accuracy for Polynomial Features
 
-OR
+# OR
 
 # Frontend:
 - cd frontend
