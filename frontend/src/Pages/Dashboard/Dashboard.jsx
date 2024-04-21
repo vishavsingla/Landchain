@@ -29,7 +29,7 @@ function Dashboard() {
 	const getLands = async () => {
 		const tempuserId = await fetchUserDetails(getToken());
 		const tlands = await getUserLands(tempuserId.data.id);
-		console.log("tlands,", tlands);
+		// console.log("All Lands Dashboard : ,", tlands);
 		setLands(tlands);
 	};
 	useEffect(() => {

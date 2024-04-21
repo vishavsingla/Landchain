@@ -35,25 +35,29 @@ const TransferLand = () => {
 
   const handleNewSubmit = async (e) => {
     e.preventDefault();
-    console.log("hi");
+    // console.log("hi");
     
     const land = await getOneLand(landId);
     
     console.log("transfer Land identi number  : ",land.data.landIdentificationNumber);
+    if(transferAmount*1000 < 0.8*predictionn){
+      console.log("Amount is less than 80% of the predicted value So Case will is Filed!",0.8*predictionn);
+    }
 
     const transferData = {
       prevOwnerId: land.data.ownerId,
       currentAccount,
       currentOwnerId: newOwnerId,
+      currentOwnerAddress: newOwnerAddress,
       landId: land.data.landIdentificationNumber,
       landIdBackend: land.data.id,
       landStatus: "with new user",
       transferAmount
     };
-    // const tempid = await transferLandfunc(transferData);
+    const tempid = await transferLandfunc(transferData);
 
     const response = await createTransferLand(transferData);
-    console.log("response : ",response);
+    // console.log("response : ",response);
     if(response.status==200){
       navigate("/dashboard");
     }
@@ -68,8 +72,8 @@ const TransferLand = () => {
             Floor_No: 2, 
             Bedroom: 3
         });
-        setPrediction(response.data.prediction);
-        console.log("Tera bhai jod : ",response.data.prediction);
+        setPrediction(response.data.prediction/100);
+        console.log("Predicted Price : ",response.data.prediction/100," Cr");
     } catch (error) {
         console.error('Error:', error);
     }
@@ -77,7 +81,7 @@ const TransferLand = () => {
 
   useEffect(() => {
     checkIfWalletIsConnect();
-    // handlePrediction();
+    handlePrediction();
   }, []);
 
   return (

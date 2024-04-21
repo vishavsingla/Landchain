@@ -49,8 +49,8 @@ const LandProvider = ({ children }) => {
           currentOwner: transaction.currentOwner,
         }));
 
-        console.log("All Transactions : ", structuredTransactions);
-        console.log("In get All Transaction");
+        // console.log("All Transactions : ", structuredTransactions);
+        // console.log("In get All Transaction");
         setTransactions(structuredTransactions);
       } else {
         console.log("Ethereum is not present");
@@ -85,8 +85,8 @@ const LandProvider = ({ children }) => {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
         const landContract = new ethers.Contract(landAddress, landABI, signer);
-        console.log(landContract);
-        console.log("In Check Transaction");
+        // console.log(landContract);
+        // console.log("In Check Transaction");
         const currentLandCount = await landContract.getLandCount();
 
         window.localStorage.setItem("LandCount", currentLandCount);
@@ -113,7 +113,7 @@ const LandProvider = ({ children }) => {
   };
 
   const addLandToBlockchain = async (formData) => {
-    console.log("in backend", formData);
+    // console.log("in backend", formData);
     if (true) {
       if (window.ethereum) {
         const {
@@ -152,7 +152,7 @@ const LandProvider = ({ children }) => {
   const transferLandfunc = async (formData) => {
     if (true) {
       if (window.ethereum) {
-        const { landId, currentOwnerId, transferAmount } = formData;
+        const { landId, currentOwnerAddress, transferAmount } = formData;
 
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
@@ -161,29 +161,25 @@ const LandProvider = ({ children }) => {
         const exchangeRate = "50735.67";
 
         const parsedAmount = ethers.parseEther(transferAmount);
-        console.log("hi1");
 
         await ethereum.request({
           method: "eth_sendTransaction",
           params: [
             {
               from: currentAccount,
-              to: currentOwnerId,
+              to: currentOwnerAddress,
               gas: "0x5208",
               value: parsedAmount.toString(16),
             },
           ],
         });
-        console.log("hi2");
-        console.log("parsedAmount : ", parsedAmount.toString(16));
+        // console.log("parsedAmount : ", parsedAmount.toString(16));
 
         const transactionHash = await landContract.transferLand(
           landId,
-          currentOwnerId, 
+          currentOwnerAddress, 
           String(parsedAmount)
         );
-        console.log("hi3");
-        console.log("Error aya error");
         setIsLoading(true);
         console.log(`Loading - ${transactionHash.hash}`);
         await transactionHash.wait();
