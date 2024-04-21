@@ -3,37 +3,38 @@ const { getLandById, updateLand } = require('./landController');
 const prisma = new PrismaClient();
 
 const createTransferLand = async (req, res) => {
-  try {
-    var { prevOwnerId, currentOwnerId, landId, landStatus, transferAmount } = req.body;
-
-    if (!prevOwnerId || !currentOwnerId || !landId || !landStatus || !transferAmount) {
+  if(true) {
+    var { prevOwnerId, currentOwnerId, landIdBackend, landStatus, transferAmount } = req.body;
+    console.log("hi : ",prevOwnerId, currentOwnerId, landIdBackend, landStatus, transferAmount);
+    if (!prevOwnerId || !currentOwnerId || !landIdBackend || !landStatus || !transferAmount) {
       return res.status(203).json({ message: "Please provide all required fields" });
     }
-    console.log("hi1");
-
+    
     const newTransferLand = await prisma.TransferLand.create({
       data: {
         prevOwnerId,
         currentOwnerId,
-        landId,
+        landId:landIdBackend,
         landStatus,
         transferPrice:transferAmount,
       },
     });
-
-    const getLandById = await prisma.land.findUnique({ where: { id: landId } });
+    
+    const getLandById = await prisma.land.findUnique({ where: { id: landIdBackend } });
+    console.log("hi1 : ",getLandById);
 
     const updateLand = await prisma.land.update({
-        where: { id: landId },
+        where: { id: landIdBackend },
         data: {
             ownerId: currentOwnerId,
         },
     });
   
     res.status(200).json({ success: true, data: newTransferLand });
-  } catch (error) {
-    res.status(203).json({ success: false, error: error.message });
-  }
+  } 
+  // catch (error) {
+  //   res.status(203).json({ success: false, error: error.message });
+  // }
 };
 
 const getAllTransferLands = async (req, res) => {

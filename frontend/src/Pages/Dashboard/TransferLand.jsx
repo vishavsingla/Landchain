@@ -46,6 +46,7 @@ const TransferLand = () => {
       currentAccount,
       currentOwnerId: newOwnerId,
       landId: land.data.landIdentificationNumber,
+      landIdBackend: land.data.id,
       landStatus: "with new user",
       transferAmount
     };
