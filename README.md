@@ -8,6 +8,10 @@ Anti corrupto implementes decentralised land registration system
 
 Used Polygon Ethereum Blockchain for testing and deploying solidity smart contracts
 
+![image](https://github.com/mayank-0407/Anticurropto-HACKOWASP6/assets/95279293/24ca309e-e5f6-4c63-9759-72d6fc29786e)
+
+
+
 # Steps to run the project
 - git clone https://github.com/mayank-0407/Anticurropto-HACKOWASP6.git //Clone the repository
 - Go into repository and open vscode
