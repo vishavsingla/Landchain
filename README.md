@@ -4,12 +4,12 @@
 - Install reboot terminal Extension ( it will automatically install everything to run the project )
 - In terminal type cd web3
 - Add private key and alchemy block url in hardhat config file
-- Now deploy it npx hardhat run deploy/scripts.js --networks sepolia
+- Now deploy it npx hardhat run scripts/deploy.js --network sepolia
 - Now copy the transaction address and paste in frontend/src/utils/web3/constants.js
 - Now you are all set so open the url in browser with web3 wallet  ( http://localhost:5173/ )
 
 # ML Model:
-got 98.73% model accuracy for Polynomial Features
+got 98.73% model accuracy using Polynomial Features - Random Forest, Decision Trees
 
 # OR
 
