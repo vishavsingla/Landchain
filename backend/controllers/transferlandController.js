@@ -4,11 +4,12 @@ const prisma = new PrismaClient();
 
 const createTransferLand = async (req, res) => {
   try {
-    const { prevOwnerId, currentOwnerId, landId, landStatus, transferPrice } = req.body;
+    var { prevOwnerId, currentOwnerId, landId, landStatus, transferAmount } = req.body;
 
-    if (!prevOwnerId || !currentOwnerId || !landId || !landStatus || !transferPrice) {
-      return res.status(400).json({ message: "Please provide all required fields" });
+    if (!prevOwnerId || !currentOwnerId || !landId || !landStatus || !transferAmount) {
+      return res.status(203).json({ message: "Please provide all required fields" });
     }
+    console.log("hi1");
 
     const newTransferLand = await prisma.TransferLand.create({
       data: {
@@ -16,7 +17,7 @@ const createTransferLand = async (req, res) => {
         currentOwnerId,
         landId,
         landStatus,
-        transferPrice,
+        transferPrice:transferAmount,
       },
     });
 
@@ -29,9 +30,9 @@ const createTransferLand = async (req, res) => {
         },
     });
   
-    res.status(201).json({ success: true, data: newTransferLand });
+    res.status(200).json({ success: true, data: newTransferLand });
   } catch (error) {
-    res.status(200).json({ success: false, error: error.message });
+    res.status(203).json({ success: false, error: error.message });
   }
 };
 

@@ -5,7 +5,7 @@ const BASE_URL = 'http://localhost:3000';
 const createTransferLand = async (transferLandData) => {
   try {
     const response = await axios.post(`${BASE_URL}/transferland/create`, transferLandData);
-    return response.data;
+    return response;
   } catch (error) {
     throw new Error(error.response.data.error || 'Something went wrong');
   }

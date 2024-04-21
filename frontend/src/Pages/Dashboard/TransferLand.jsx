@@ -12,6 +12,7 @@ const TransferLand = () => {
   const [error, setError] = useState("");
   const [iserror, setIsError] = useState(false);
   const [newOwnerAddress, setNewOwnerAddress] = useState("");
+  const [newOwnerId, setNewOwnerId] = useState("");
   const [transferAmount, setTransferAmount] = useState("");
   const [predictionn, setPrediction] = useState("");
 
@@ -38,21 +39,25 @@ const TransferLand = () => {
     
     const land = await getOneLand(landId);
     
-    console.log("transfer Land : ",land);
+    console.log("transfer Land identi number  : ",land.data.landIdentificationNumber);
 
     const transferData = {
       prevOwnerId: land.data.ownerId,
       currentAccount,
-      currentOwnerId: newOwnerAddress,
+      currentOwnerId: newOwnerId,
       landId: land.data.landIdentificationNumber,
       landStatus: "with new user",
       transferAmount
     };
-    const tempid = await transferLandfunc(transferData);
-    console.log(tempid);
+    // const tempid = await transferLandfunc(transferData);
 
     const response = await createTransferLand(transferData);
-      console.log(response);
+    console.log("response : ",response);
+    if(response.status==200){
+      navigate("/dashboard");
+    }
+    else
+    console.log(response.error);
   };
 
   const handlePrediction = async () => {
@@ -107,6 +112,25 @@ const TransferLand = () => {
                     value={newOwnerAddress}
                     onChange={(e) => setNewOwnerAddress(e.target.value)}
                     placeholder="Enter the newOwnerAddress!"
+                    className="w-full p-2 border border-gray-300 rounded-2xl mb-2 text-sm bg-blue-50 opacity-50"
+                    required
+                  />
+                </div>
+
+                <div className="mb-2">
+                  <label
+                    htmlFor="newOwnerId"
+                    className="block mb-2 text-left font-semibold"
+                  >
+                    Id of the new owner
+                  </label>
+                  <input
+                    type="text"
+                    name="newOwnerId"
+                    id="newOwnerId"
+                    value={newOwnerId}
+                    onChange={(e) => setNewOwnerId(e.target.value)}
+                    placeholder="Enter the newOwnerId!"
                     className="w-full p-2 border border-gray-300 rounded-2xl mb-2 text-sm bg-blue-50 opacity-50"
                     required
                   />
