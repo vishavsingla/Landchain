@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../utils/API/authAPI";
-import { setSessionTocken, isLogin } from "../utils/cookieSetup";
+import { setSessionToken, isLogin } from "../utils/cookieSetup";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ function Login() {
       if (response.session.sessionToken) {
         console.log(response.session.sessionToken);
         setSessionId(response.session.sessionToken);
-        setSessionTocken(response.session.sessionToken);
+        setSessionToken(response.session.sessionToken);
         navigate("/dashboard");
         console.log("Successfully Logged!");
       }

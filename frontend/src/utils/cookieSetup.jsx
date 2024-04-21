@@ -15,7 +15,7 @@ export const getCookie = (key) => {
   return cookie.get(key);
 };
 
-export const setSessionTocken = (token) => {
+export const setSessionToken = (token) => {
   setCookie("token", token);
 };
 

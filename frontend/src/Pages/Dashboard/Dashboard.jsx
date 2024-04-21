@@ -6,7 +6,7 @@ import { BiCategory } from "react-icons/bi";
 import { FaCaretDown } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import {
-	setSessionTocken,
+	setSessionToken,
 	isLogin,
 	getCookie,
 	getToken,
