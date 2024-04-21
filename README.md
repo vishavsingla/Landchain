@@ -14,28 +14,28 @@ got 98.73% model accuracy for Polynomial Features
 OR
 
 # Frontend:
-cd frontend
-npm i
-npm run dev
+- cd frontend
+- npm i
+- npm run dev
 
 # Database:
-cd backend
-docker compose up
+- cd backend
+- docker compose up
 
 # Backend:
-cd backend
-npm i
-npx prisma migrate dev
-npx prisma generate
-nodemon
+- cd backend
+- npm i
+- npx prisma migrate dev
+- npx prisma generate
+- nodemon
 
 # ML model python app:
-cd mlapi
-pip install -r requirements.txt
-python app.py
+- cd mlapi
+- pip install -r requirements.txt
+- python app.py
 
 # web3:
-cd web3
-npm I
-npx hardhat run deploy/scripts.js --networks sepolia
+- cd web3
+- npm I
+- npx hardhat run deploy/scripts.js --networks sepolia
 ...
