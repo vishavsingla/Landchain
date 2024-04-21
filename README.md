@@ -1,3 +1,13 @@
+#Description
+Anti corrupto implementes decentralised land registration system
+- Blockchain-based Transactions: The system utilizes blockchain technology to create a secure and tamper-proof record of land ownership and transfers. This ensures:
+- Immutability: Once a transaction is recorded on the blockchain, it cannot be altered or deleted.
+- Transparency: Everyone with permission can access the land registry and verify ownership history.
+- Machine Learning for Price Detection: An ML model analyzes various factors to estimate the fair market value of land in a specific location. This helps identify transactions with significantly lower declared values, potentially indicating tax evasion.
+- Automated Inquiry System: If the ML model detects a significant discrepancy between the declared value and the estimated market value, an automated inquiry is raised. This eliminates human intervention and reduces the possibility of bribery.
+
+Used Polygon Ethereum Blockchain for testing and deploying solidity smart contracts
+
 # Steps to run the project
 - git clone https://github.com/mayank-0407/Anticurropto-HACKOWASP6.git //Clone the repository
 - Go into repository and open vscode
