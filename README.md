@@ -1,5 +1,5 @@
 # Description:
-Anti corrupto implementes decentralised land registration system
+Landchainimplementes decentralised land registration system
 - Blockchain-based Transactions: The system utilizes blockchain technology to create a secure and tamper-proof record of land ownership and transfers. This ensures:
 - Immutability: Once a transaction is recorded on the blockchain, it cannot be altered or deleted.
 - Transparency: Everyone with permission can access the land registry and verify ownership history.
